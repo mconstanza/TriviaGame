@@ -26,8 +26,44 @@ $(document).ready(function(){
 	var questionAnswered = false;
 
 
+
+// Timer ///////////////////////////////////////////////////////////////////////////////
+
+	time = 10; // number of seconds for timeRemaining
+
+	runTimer = function(){
+		$timerDiv.show()
+		counter = setInterval(decrement, 1000);
+		$timerDiv.show();
+		$timeRemaining.html(' ' + time);
+	};
+
+	decrement = function(){
+		console.log(time);
+		time--;
+		$timeRemaining.html(' ' + time);
+
+		if(time == 0){
+
+			stopTimer();
+			$timeRemaining.html("Time's Up!");
+			time = 10; // reset the timer
+
+		// display answer screen
+		}
+	}
+
+	stopTimer = function(){
+		clearInterval(counter);
+		time = 10;
+		
+	}
+
+
 // Question Object ////////////////////////////////////////////////////////////////////////////
 	function question(text, choices, answer, background, answerMedia){
+
+		console.log('timer created');
 
 		this.text = text;
 		this.choices = choices;
@@ -51,30 +87,35 @@ $(document).ready(function(){
 
 			$choice4.html(this.choices[3]);
 			$choice4.data('choice', this.choices[3] );
-		}
+		};
 
-	}
+	};
 
 // Question Creation //////////////////////////////////////////////////////////////////////////
 	var test = new question('What is my name?', ['Steve', 'Jack', 'Mike', 'Blaine'],
-		'Mike')
+		'Mike');
 
-	questions.push(test);
+	var test2 = new question("what color are my eyes?", ['blue', 'brown', 'green', 'purple'], 'blue');
+
+	questions = [test, test2];
 
 	currentQuestion = questions[questionIndex];
-
 
 // General Functions //////////////////////////////////////////////////////////////////////////
 	function nextQuestion(){
 
 		if (questionIndex == questions.length) {
 			// end game
+			$timerDiv.hide();
 			$question.html("Game Over!")
 
-		}else {
+			// display end screen
 
-			currentQuestion = questions[questionIndex]
+		}else {
+			// go to the next question
+			currentQuestion = questions[questionIndex];
 			currentQuestion.displayQuestion();
+			runTimer();
 			questionAnswered = false;
 		}
 
@@ -84,10 +125,10 @@ $(document).ready(function(){
 
 	// when start button is clicked ///////////////////////////////////////////////////////////
 	$start.on('click', function(){
-		$timerDiv.html("Time Remaining: <span id='timeRemaining'></span>")
+		
 		nextQuestion();
 
-	})
+	});
 	
 	// when an answer choice is clicked, compare it to the correct answer
 	$choice.on('click', function(){
@@ -96,9 +137,8 @@ $(document).ready(function(){
 
 			questionAnswered = true;
 		
-		
-		console.log('answer: ' + currentQuestion.answer)
-		console.log('choice: ' + $(this).data('choice'))
+
+		// logic for correct answer
 
 			if($(this).data('choice') == currentQuestion.answer){
 				// right answer logic
@@ -106,18 +146,25 @@ $(document).ready(function(){
 				$question.html("Correct!")
 				questionIndex += 1;
 
+				stopTimer();
+
 				setTimeout(nextQuestion, 3000);
+
+		// logic for incorrect answer
 			}else {
 				// wrong answer logic
-				console.log("Wrong answer!")
-				$question.html("Wrong!")
+				console.log("Wrong answer!");
+				$question.html("Wrong!");
 				questionIndex += 1;
+
+				stopTimer();
 
 				setTimeout(nextQuestion, 3000);
 			}	
 		}
-	})
+	});
 
 
+	$timerDiv.hide(); // start with 'time remaining' hidden.
 
 })// end of jQuery
