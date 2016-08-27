@@ -1,0 +1,80 @@
+/*Background*/
+
+body {
+	background-image: url('../images/batmanminimalist.png');
+	background-size: 100%, 100%;
+	background-repeat: no-repeat;
+    background-position: right top;
+    background-attachment: fixed;
+
+    font-family: GothamNights;
+    font-size: 42px;
+    color: #0a2129;
+}
+
+
+/*Fonts******************************************************************************/
+@font-face {
+    font-family: GothamNights;
+    src: url('../fonts/Gotham Nights.otf');
+}
+
+@font-face {
+    font-family: GothamNightsBold;
+    src: url('../fonts/Gotham Nights Bold.otf');
+}
+
+title, #title {
+	font-family: GothamNightsBold;
+	font-size: 56px;
+}
+
+/* Div Sizing **********************************************************************/
+
+#title {
+	margin-bottom: 2.5%;
+}
+
+#questionDiv {
+	margin: 1% 0;
+}
+
+
+
+/* Timer ***************************************************************************/
+
+#timerDiv {
+	margin-left: 32px;
+	width: 20%;
+}
+
+
+/*Answer Choices********************************************************************/
+
+
+/*.choiceBackground {
+	background-color: #74837c;
+	background:rgb(116,131,124, 0.3);
+	z-index: 1;
+
+}*/
+
+.choice {
+	background-color:rgb(116,131,124, 0.7);
+	z-index: 2;
+}
+
+.choice:hover{
+	color: #2b5355 ;
+}
+
+
+
+/* Start Button ********************************************************************/
+
+#startButton {
+	background-color: #74837c;
+	color: #0a2129;
+	border-color: #0a2129;
+	margin-top: 5%;
+}

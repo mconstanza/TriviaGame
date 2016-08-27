@@ -13,32 +13,43 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
 
-    <title> Trivia Game </title>
+    <title> Batman Trivia </title>
 </head>
 
 
 <body>
 	<div class='container'>
 
-		<div id ='title' class ='text-center'>Trivia</div>
-		<hr>
-		<div id ='timerDiv' class='text-center'>Time Remaining: 
+		<div id ='title' class ='text-center'>Batman Trivia</div>
+		<!-- <hr> -->
+		<div id ='timerDiv'><span id = 'timerSpan'>Time Remaining: </span>
 			<span id='timeRemaining'></span>
 		</div>
 		
-		<hr>
+		<!-- <hr> -->
 
-		<div class='text-center'>
+		<div>
 			<div id = 'questionDiv' class='text-center'></div>
-			<hr>
-			<div class ='choice text-center' id = 'choice1'></div>
-			<div class ='choice text-center' id = 'choice2'></div>
-			<div class ='choice text-center' id = 'choice3'></div>
-			<div class ='choice text-center' id = 'choice4'></div>
+			<!-- <hr> -->
+			<div class='choiceBackground'>
+				<div class ='choice text-center' id = 'choice1'></div> 
+			</div> 
+
+			<div class='choiceBackground'>
+				<div class ='choice text-center' id = 'choice2'></div>
+			</div>	
+
+			<div class='choiceBackground'>	
+				<div class ='choice text-center' id = 'choice3'></div>
+			</div>
+
+			<div class='choiceBackground'>
+				<div class ='choice text-center' id = 'choice4'></div>
+			</div>
 		</div>
 
 		<div class='text-center'>
-			<button id='startButton' class='btn btn-default text-center'>Start Game!</button>
+			<button id='startButton' class='btn btn-lg btn-default text-center'>Start Game!</button>
 		</div>	
 
 	</div>

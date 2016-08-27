@@ -7,6 +7,7 @@ $(document).ready(function(){
 	
 	// Dom Elements /////////////////////////////
 	var $timerDiv = $('#timerDiv');
+	var $timerSpan = $('#timerSpan');
 	var $timeRemaining = $('#timeRemaining');
 	var $question = $('#questionDiv');
 	var $choice = $('.choice');
@@ -32,9 +33,9 @@ $(document).ready(function(){
 	time = 10; // number of seconds for timeRemaining
 
 	runTimer = function(){
-		$timerDiv.show()
+		$timerSpan.html('Time Remaining: ')
 		counter = setInterval(decrement, 1000);
-		$timerDiv.show();
+		$timerSpan.show();
 		$timeRemaining.html(' ' + time);
 	};
 
@@ -46,8 +47,17 @@ $(document).ready(function(){
 		if(time == 0){
 
 			stopTimer();
-			$timeRemaining.html("Time's Up!");
+			$timerSpan.html("Time's Up!");
+			$timerSpan.css('margin-left', '45px')
 			time = 10; // reset the timer
+			questionIndex += 1;
+
+			losses ++;
+			
+			setTimeout(function(){
+				$timerSpan.css('margin-left', '0')
+			}, 2000)
+			setTimeout(nextQuestion, 2000);
 
 		// display answer screen
 		}
@@ -55,13 +65,16 @@ $(document).ready(function(){
 
 	stopTimer = function(){
 		clearInterval(counter);
-		time = 10;
+		$timeRemaining.empty();
+		
+
+
 		
 	}
 
 
 // Question Object ////////////////////////////////////////////////////////////////////////////
-	function question(text, choices, answer, background, answerMedia){
+	function question(text, choices, answer, background, answerMedia, sound){
 
 		console.log('timer created');
 
@@ -70,6 +83,7 @@ $(document).ready(function(){
 		this.answer = answer;
 		this.background = background;
 		this.answerMedia = answerMedia;
+		this.sound = sound;
 
 		this.displayQuestion = function(){
 
@@ -114,9 +128,11 @@ $(document).ready(function(){
 // General Functions //////////////////////////////////////////////////////////////////////////
 	function nextQuestion(){
 
+		console.log('next question')
+
 		if (questionIndex == questions.length) {
 			// end game
-			$timerDiv.hide();
+			$timerSpan.hide();
 			$question.html("Game Over!")
 
 			displayResults();
@@ -132,6 +148,7 @@ $(document).ready(function(){
 		}
 
 	}
+
 
 // OnClick functions //////////////////////////////////////////////////////////////////////////
 
@@ -156,27 +173,31 @@ $(document).ready(function(){
 				// right answer logic
 				console.log("Right answer!")
 				$question.html("Correct!")
+
+				wins ++;
 				questionIndex += 1;
 
 				stopTimer();
 
-				setTimeout(nextQuestion, 3000);
+				setTimeout(nextQuestion, 2000);
 
 		// logic for incorrect answer
 			}else {
 				// wrong answer logic
 				console.log("Wrong answer!");
 				$question.html("Wrong!");
+
+				losses ++;
 				questionIndex += 1;
 
 				stopTimer();
 
-				setTimeout(nextQuestion, 3000);
+				setTimeout(nextQuestion, 2000);
 			}	
 		}
 	});
 
 
-	$timerDiv.hide(); // start with 'time remaining' hidden.
+	$timerSpan.hide(); // start with 'time remaining' hidden.
 
 })// end of jQuery
