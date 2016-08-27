@@ -91,6 +91,16 @@ $(document).ready(function(){
 
 	};
 
+
+// Other Functions ////////////////////////////////////////////////////////////////////////////
+
+	displayResults = function(){
+
+		$choice.empty();
+		$choice1.html("Correct: " + wins);
+		$choice2.html("Incorrect: " + losses);
+	}
+
 // Question Creation //////////////////////////////////////////////////////////////////////////
 	var test = new question('What is my name?', ['Steve', 'Jack', 'Mike', 'Blaine'],
 		'Mike');
@@ -108,6 +118,8 @@ $(document).ready(function(){
 			// end game
 			$timerDiv.hide();
 			$question.html("Game Over!")
+
+			displayResults();
 
 			// display end screen
 
