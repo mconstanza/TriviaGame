@@ -59,8 +59,8 @@ $(document).ready(function(){
 			
 			setTimeout(function(){
 				$timerSpan.css('margin-left', '0')
-			}, 3000)
-			setTimeout(nextQuestion, 3000);
+			}, 3800)
+			setTimeout(nextQuestion, 3800);
 
 		// display answer screen
 		}
@@ -158,7 +158,7 @@ $(document).ready(function(){
 
 	var baneCat = $("<img>", {class: 'answerImg', src: "https://media.giphy.com/media/3sS46VYO8KqWY/giphy.gif"});
 
-	var kevinConroy = '<iframe width="560" height="315" src="https://www.youtube.com/embed/g7jxcEqE5ic?rel=0&autoplay=1&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>'
+	var kevinConroy = '<iframe width="560" height="315" src="https://www.youtube.com/embed/g7jxcEqE5ic?rel=0&autoplay=1&start=5&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>'
 
 	var hamillJoker = $("<img>", {class: 'answerImg', src: "https://media.giphy.com/media/vZ57IYRNP6CCk/giphy.gif"});
 
@@ -199,9 +199,13 @@ $(document).ready(function(){
 
 	var batmanAnimatedTheme = $("<audio>", {class: 'answerSound', src: "assets/sounds/batmananimatedtheme.mp3"});
 
+	var arkhamCity = $("<audio>", {class: 'answerSound', src: "assets/sounds/arkhamcitytheme.mp3"});
+
+	var gothamCity = $("<audio>", {class: 'answerSound', src: "assets/sounds/gothamcity.mp3"});
+
 	// playlist for music
 
-	var playlist = [batmanAnimatedTheme, batmanBeginsTheme]
+	var playlist = [batmanAnimatedTheme, batmanBeginsTheme, arkhamCity, gothamCity]
 
 
 // Question Creation //////////////////////////////////////////////////////////////////////////
@@ -281,9 +285,8 @@ $(document).ready(function(){
 		console.log('next question')
 		console.log('question index: ' + questionIndex)
 
-		if (questionIndex == 1) { // debugging
 
-		// if (questionIndex == questions.length) {
+		if (questionIndex == questions.length) {
 			// end game
 			$timerSpan.hide();
 			$question.html("Game Over!")
@@ -350,7 +353,7 @@ $(document).ready(function(){
 
 				currentQuestion.displayImage();
 
-				setTimeout(nextQuestion, 3000);
+				setTimeout(nextQuestion, 3800);
 
 		// logic for incorrect answer
 			}else {
@@ -365,9 +368,11 @@ $(document).ready(function(){
 
 				currentQuestion.displayImage();
 
+				$('#choice2:hover').css('color', '')
+
 				$choice1.html(currentQuestion.answer)
 
-				setTimeout(nextQuestion, 3000);
+				setTimeout(nextQuestion, 3800);
 			}	
 		}
 	});
