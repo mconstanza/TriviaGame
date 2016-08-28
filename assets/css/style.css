@@ -6,6 +6,7 @@ body {
 	background-repeat: no-repeat;
     background-position: right top;
     background-attachment: fixed;
+    background-color: #426c6e;
 
     font-family: GothamNights;
     font-size: 42px;
@@ -36,7 +37,7 @@ title, #title {
 }
 
 #questionDiv {
-	margin: 1% 0;
+	margin: 1% auto;
 }
 
 
@@ -51,17 +52,19 @@ title, #title {
 
 /*Answer Choices********************************************************************/
 
+#questionDiv {
+	width: 50%;
 
-/*.choiceBackground {
-	background-color: #74837c;
-	background:rgb(116,131,124, 0.3);
-	z-index: 1;
-
-}*/
+}
 
 .choice {
 	background-color:rgb(116,131,124, 0.7);
 	z-index: 2;
+}
+
+.choice img {
+	max-width: 40%;
+	max-height: 40%;
 }
 
 .choice:hover{

@@ -49,6 +49,9 @@ $(document).ready(function(){
 			stopTimer();
 			$timerSpan.html("Time's Up!");
 			$timerSpan.css('margin-left', '45px')
+
+			currentQuestion.displayImage();
+
 			time = 10; // reset the timer
 			questionIndex += 1;
 
@@ -56,8 +59,8 @@ $(document).ready(function(){
 			
 			setTimeout(function(){
 				$timerSpan.css('margin-left', '0')
-			}, 2000)
-			setTimeout(nextQuestion, 2000);
+			}, 3000)
+			setTimeout(nextQuestion, 3000);
 
 		// display answer screen
 		}
@@ -71,16 +74,16 @@ $(document).ready(function(){
 
 
 // Question Object ////////////////////////////////////////////////////////////////////////////
-	function question(text, choices, answer, background, answerMedia, sound){
-
-		console.log('timer created');
+	function question(text, choices, answer, image, sound){
 
 		this.text = text;
 		this.choices = choices;
 		this.answer = answer;
-		this.background = background;
-		this.answerMedia = answerMedia;
+		this.image = image;
 		this.sound = sound;
+
+		console.log("image " + this.image)
+		console.log(image)
 
 		this.displayQuestion = function(){
 
@@ -100,6 +103,21 @@ $(document).ready(function(){
 			$choice4.data('choice', this.choices[3] );
 		};
 
+		this.displayImage = function(){
+
+			$choice1.empty();
+			$choice2.empty();
+			$choice3.empty();
+			$choice4.empty();
+
+			$choice2.html(this.image);
+
+			if (this.sound){
+				$choice3.html(this.sound);
+				this.sound.get(0).play();
+			}
+		}
+
 	};
 
 
@@ -113,62 +131,149 @@ $(document).ready(function(){
 	}
 
 	function shuffleArray(array) {
-    for (var i = array.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-    }
-    return array;
-}
+	    for (var i = array.length - 1; i > 0; i--) {
+	        var j = Math.floor(Math.random() * (i + 1));
+	        var temp = array[i];
+	        array[i] = array[j];
+	        array[j] = temp;
+	    }
+	    return array;
+	}
+
+	function playMusic(){
+
+		music = Math.floor(Math.random() * playlist.length)
+
+		$('#title').append(playlist[music]);
+
+		playlist[music].get(0).play();
+
+	}
+
+// Image Creation /////////////////////////////////////////////////////////////////////////////
+	
+	var batShark = $("<img>", {class: 'answerImg', src: "https://media.giphy.com/media/14y3bdRzH8aT0k/giphy.gif" });
+
+	var penguin = $("<img>", {class: 'answerImg', src: "https://media.giphy.com/media/pNAkiBswVUu52/giphy.gif"});
+
+	var baneCat = $("<img>", {class: 'answerImg', src: "https://media.giphy.com/media/3sS46VYO8KqWY/giphy.gif"});
+
+	var kevinConroy = '<iframe width="560" height="315" src="https://www.youtube.com/embed/g7jxcEqE5ic?rel=0&autoplay=1&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>'
+
+	var hamillJoker = $("<img>", {class: 'answerImg', src: "https://media.giphy.com/media/vZ57IYRNP6CCk/giphy.gif"});
+
+	var barb = $("<img>", {class: 'answerImg', src: "http://comicvine.gamespot.com/api/image/scale_medium/4459948-killing-joke-joker-takes-pictures.jpg"});
+
+	var harley = $("<img>", {class: 'answerImg', src: "https://media.giphy.com/media/l2JecKRWml6Sp2ufC/giphy.gif"});
+
+	var oracleImg = $("<img>", {class: 'answerImg', src: "http://img.cinemablend.com/cb/1/6/9/a/6/a/169a6a79e3c801441cf70525ffca193d2d8cc6a07e7eee8ab38f83035b974458.jpg"});
+
+	var nightwing = $("<img>", {class: 'answerImg', src: "https://media.giphy.com/media/3o7ZetcJWG0LFI1n1e/giphy.gif"});
+
+	var jasonTodd = $("<img>", {class: 'answerImg', src: "https://media.giphy.com/media/t8clt4CIBfaVO/giphy.gif"});
+
+	var joeChill = $("<img>", {class: 'answerImg', src: "http://static8.comicvine.com/uploads/scale_small/11127/111278246/5090794-2064367790-latest"});
+
+	var noraImg = $("<img>", {class: 'answerImg', src: "https://media.giphy.com/media/Z0yUOa1WWf5rW/giphy.gif"});
+
+	var martha = $("<img>", {class: 'answerImg', src: "https://media.giphy.com/media/k5EfdqGN3A1eE/giphy.gif"});
+
+	var billFingerImg = $("<img>", {class: 'answerImg', src: "https://numberonebatfan.files.wordpress.com/2015/08/bill-the-boy-wonder-site-bill-finger-trading-card-1.jpg?w=604"});
+	var talia = $("<img>", {class: 'answerImg', src: "https://upload.wikimedia.org/wikipedia/en/8/8e/BATMAN,_INCORPORATED_vol.2_2_2012_variant.jpg"});
+	var damian = $("<img>", {class: 'answerImg', src: "https://media0.giphy.com/media/XHcuph8mKHw52/200.gif"});
+	var harveyDentImg = $("<img>", {class: 'answerImg', src: "https://media0.giphy.com/media/TvZYht7srnIiY/200.gif"});
+	var scarecrow = $("<img>", {class: 'answerImg', src: "https://media.giphy.com/media/gYDW7y9GcNzC8/giphy.gif"});
+	var penguinDevito = $("<img>", {class: 'answerImg', src: "https://media.giphy.com/media/fWqDxyYcnZN96/giphy.gif"});
+	var matches = $("<img>", {class: 'answerImg', src: "http://images.techtimes.com/data/images/full/177577/matches-malone.jpg"});
+
+// Sound Creation /////////////////////////////////////////////////////////////////////////////
+
+	// sound effects
+
+	var baneInCharge = $("<audio>", {class: 'answerSound', src: "assets/sounds/baneincharge.ogg"});
+
+
+	// music
+
+	var batmanBeginsTheme = $("<audio>", {class: 'answerSound', src: "assets/sounds/batmanbeginstheme.mp3"});
+
+	var batmanAnimatedTheme = $("<audio>", {class: 'answerSound', src: "assets/sounds/batmananimatedtheme.mp3"});
+
+	// playlist for music
+
+	var playlist = [batmanAnimatedTheme, batmanBeginsTheme]
+
 
 // Question Creation //////////////////////////////////////////////////////////////////////////
-	// var test = new question('What is my name?', ['Steve', 'Jack', 'Mike', 'Blaine'],
-	// 	'Mike');
 
-	// var test2 = new question("what color are my eyes?", ['blue', 'brown', 'green', 'purple'], 'blue');
 
 	var movieReleased = new question("When was the first Batman movie released?", ['1966', '1943', 
-		'1968', '1989'], '1943');
+		'1968', '1989'], '1966', batShark );
 
 	var penguinName = new question("What is the Penguin's real name?", ['Oswald Cobblepot',
-		'Edward Nygma', 'Norman Osborn', 'John Wayne Corben'], 'Oswald Cobblepot');
+		'Edward Nygma', 'Norman Osborn', 'John Wayne Corben'], 'Oswald Cobblepot', penguin);
 
 	var backBreak = new question("What villain once broke Batman's back, leaving him crippled?",
-		["Ra's Al Ghul", 'Bane', 'Killer Croc', 'Mr. Freeze'], 'Bane');
+		["Ra's Al Ghul", 'Bane', 'Killer Croc', 'Mr. Freeze'], 'Bane', baneCat, baneInCharge);
 
 	var batmanVoice = new question("Who voiced Batman in 7 different cartoon series?",
-		['Kevin Conroy', 'Timothy Daly', 'Nolan North', 'Christian Bale'], "Kevin Conroy");
+		['Kevin Conroy', 'Timothy Daly', 'Nolan North', 'Christian Bale'], "Kevin Conroy", kevinConroy);
 
 	var jokerVoice = new question("Who voiced the Joker in Batman: The Animated Series?",
 		['Kevin Michael Richardson', 'Ceasar Romero', 'Jack Nicholson', 'Mark Hamill'], 
-		'Mark Hamill');
+		'Mark Hamill', hamillJoker);
 
 	var killingJoke = new question("Who got shot during 'The Killing Joke' storyline?",
-		['Robin', 'Alfred', 'Barbara Gordon', 'Batman'], 'Barbara Gordon');
+		['Robin', 'Alfred', 'Barbara Gordon', 'Batman'], 'Barbara Gordon', barb);
 
 	var quinnMeet = new question("Where did Harley Quinn meet the Joker?",
-		['Gotham General', 'Arkham Asylum', 'Gotham police station', 'Bellereave'], "Arkham Asylum");
+		['Gotham General', 'Arkham Asylum', 'Gotham police station', 'Bellereave'], "Arkham Asylum", harley);
 
 	var barbOracle = new question("Which of these was one of Barbara Gordon's aliases?",
-		['B', 'The Watcher', 'Oracle', 'Huntress'], 'Oracle');
+		['B', 'The Watcher', 'Oracle', 'Huntress'], 'Oracle', oracleImg);
 
 	var nightWing = new question("What was Dick Grayson's new alias after he stopped being Robin?",
-		[ 'Red Hood', 'Nightwing', 'Moonknight', 'The Question'], 'Nightwing');
+		[ 'Red Hood', 'Nightwing', 'Moonknight', 'The Question'], 'Nightwing', nightwing);
 
 	var robinKilled = new question("Which Robin was killed by the Joker?", ['Dick Grayson', 'Jason Todd', 'Tim Drake', 'Damian Wayne'],
-		'Jason Todd');
+		'Jason Todd', jasonTodd);
 
 	var waynesKilled = new question("Who killed Bruce Wayne's parents?", ['The Joker', 'The Riddler', 'Joe Chill', 'Victor Zsaz'],
-		'Joe Chill');
+		'Joe Chill', joeChill);
 
+	var nora = new question("What is the name of Mr. Freeze's wife that he has sworn to cure of her ailment?" , ['Emily', 'Lora', 'Elsa', 'Nora'], 'Nora', noraImg);
+
+	var wayneNames = new question("What were the names of Bruce Wayne's parents?", ['Thomas and Martha', 'James and Elizabeth', 'George and Elaine', 'Fox and Dana'],
+		'Thomas and Martha', martha);
+
+	var billFinger = new question("Who is now acknowledged posthumously as one of the creators of Batman after years of not receiving credit?",
+		[ 'Bob Kane', 'Jerry Siegel', 'Bill Finger', 'Jack Kirby'], 'Bill Finger', billFingerImg);
+
+	var batmanChild = new question("Which of the following characters did Bruce Wayne have a son with?", ['Talia Al Ghul', 'Poison Ivy', 'Vesper Fairchild', 'Vicki Vale'],
+		'Talia Al Ghul', talia);
+
+	var batmanSonName = new question("What is Batman's son's name?", ['Dick', 'Jason', 'Tim', 'Damian'], 'Damian', damian);
+
+	var harveyDent = new question("What former District Attorney became the villain known as Two-Face?", ['Harvey Dent', 'Edward Nygma', 'Jim Gordon', 'Jonathan Crane'],
+		'Harvey Dent', harveyDentImg);
+
+	var jonathanCrane = new question("What is the alias of Professor Jonathan Crane?", [ 'Mad Hatter', 'Riddler', 'Scarecrow', 'Hugo Strange'],
+		'Scarecrow', scarecrow);
+
+	var penguinClub = new question("What is the name of Penguin's nightclub?", ['Club Penguin', 'Iceberg Lounge', 'Umbrella Lounge', 'Club Glacier'],
+		'Iceberg Lounge', penguinDevito);
+
+	var undercover = new question("What alias does Batman often use when working undercover?", ['Don Fortunato', 'Wilson Fisk', 'Carmine Falcone', 'Matches Malone'],
+		'Matches Malone', matches);
 
 	questions = [ movieReleased, penguinName, backBreak, batmanVoice, jokerVoice, killingJoke, quinnMeet,
-	 barbOracle, nightWing, robinKilled, waynesKilled];
+	 barbOracle, nightWing, robinKilled, waynesKilled, nora, wayneNames, billFinger, batmanChild, batmanSonName, harveyDent, jonathanCrane, penguinClub,
+	 undercover];
 
 	questions = shuffleArray(questions);
 
 	currentQuestion = questions[questionIndex];
+
 
 // General Functions //////////////////////////////////////////////////////////////////////////
 	function nextQuestion(){
@@ -199,6 +304,8 @@ $(document).ready(function(){
 
 	// when start button is clicked ///////////////////////////////////////////////////////////
 	$start.on('click', function(){
+
+		$start.hide();
 		
 		nextQuestion();
 
@@ -224,7 +331,9 @@ $(document).ready(function(){
 
 				stopTimer();
 
-				setTimeout(nextQuestion, 2000);
+				currentQuestion.displayImage();
+
+				setTimeout(nextQuestion, 3000);
 
 		// logic for incorrect answer
 			}else {
@@ -237,12 +346,20 @@ $(document).ready(function(){
 
 				stopTimer();
 
-				setTimeout(nextQuestion, 2000);
+				currentQuestion.displayImage();
+
+				$choice1.html(currentQuestion.answer)
+
+				setTimeout(nextQuestion, 3000);
 			}	
 		}
 	});
 
 
 	$timerSpan.hide(); // start with 'time remaining' hidden.
+
+	playMusic();
+
+	// $choice2.html(penguinDevito);
 
 })// end of jQuery
