@@ -40,7 +40,7 @@ $(document).ready(function(){
 	};
 
 	decrement = function(){
-		console.log(time);
+
 		time--;
 		$timeRemaining.html(' ' + time);
 
@@ -82,10 +82,9 @@ $(document).ready(function(){
 		this.image = image;
 		this.sound = sound;
 
-		console.log("image " + this.image)
-		console.log(image)
-
 		this.displayQuestion = function(){
+
+			console.log("displaying question")
 
 			$question.html(this.text);
 
@@ -128,6 +127,7 @@ $(document).ready(function(){
 		$choice.empty();
 		$choice1.html("Correct: " + wins);
 		$choice2.html("Incorrect: " + losses);
+		$start.show();
 	}
 
 	function shuffleArray(array) {
@@ -270,17 +270,20 @@ $(document).ready(function(){
 	 barbOracle, nightWing, robinKilled, waynesKilled, nora, wayneNames, billFinger, batmanChild, batmanSonName, harveyDent, jonathanCrane, penguinClub,
 	 undercover];
 
-	questions = shuffleArray(questions);
+	//questions = shuffleArray(questions);
 
-	currentQuestion = questions[questionIndex];
+	//currentQuestion = questions[questionIndex];
 
 
 // General Functions //////////////////////////////////////////////////////////////////////////
 	function nextQuestion(){
 
 		console.log('next question')
+		console.log('question index: ' + questionIndex)
 
-		if (questionIndex == questions.length) {
+		if (questionIndex == 1) { // debugging
+
+		// if (questionIndex == questions.length) {
 			// end game
 			$timerSpan.hide();
 			$question.html("Game Over!")
@@ -291,6 +294,8 @@ $(document).ready(function(){
 
 		}else {
 			// go to the next question
+
+			console.log('current question: ' + currentQuestion)
 			currentQuestion = questions[questionIndex];
 			currentQuestion.displayQuestion();
 			runTimer();
@@ -304,6 +309,18 @@ $(document).ready(function(){
 
 	// when start button is clicked ///////////////////////////////////////////////////////////
 	$start.on('click', function(){
+
+		questionIndex = 0;
+		console.log("question index after start: " + questionIndex)
+
+		// Game variables ///////////////////////////
+		wins = 0;
+		losses = 0;
+		questionAnswered = false;
+
+		questions = shuffleArray(questions);
+
+		currentQuestion = questions[questionIndex];
 
 		$start.hide();
 		
@@ -323,7 +340,7 @@ $(document).ready(function(){
 
 			if($(this).data('choice') == currentQuestion.answer){
 				// right answer logic
-				console.log("Right answer!")
+				
 				$question.html("Correct!")
 
 				wins ++;
@@ -338,7 +355,7 @@ $(document).ready(function(){
 		// logic for incorrect answer
 			}else {
 				// wrong answer logic
-				console.log("Wrong answer!");
+	
 				$question.html("Wrong!");
 
 				losses ++;
@@ -359,7 +376,5 @@ $(document).ready(function(){
 	$timerSpan.hide(); // start with 'time remaining' hidden.
 
 	playMusic();
-
-	// $choice2.html(penguinDevito);
 
 })// end of jQuery
