@@ -30,7 +30,7 @@ $(document).ready(function(){
 
 // Timer ///////////////////////////////////////////////////////////////////////////////
 
-	time = 10; // number of seconds for timeRemaining
+	time = 15; // number of seconds for timeRemaining
 
 	runTimer = function(){
 		$timerSpan.html('Time Remaining: ')
@@ -52,7 +52,7 @@ $(document).ready(function(){
 
 			currentQuestion.displayImage();
 
-			time = 10; // reset the timer
+			time = 15; // reset the timer
 			questionIndex += 1;
 
 			losses ++;
@@ -69,7 +69,7 @@ $(document).ready(function(){
 	stopTimer = function(){
 		clearInterval(counter);
 		$timeRemaining.empty();
-		time = 10;
+		time = 15;
 	}
 
 
