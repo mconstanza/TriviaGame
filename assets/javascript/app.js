@@ -48,9 +48,10 @@ $(document).ready(function(){
 
 			stopTimer();
 			$timerSpan.html("Time's Up!");
-			$timerSpan.css('margin-left', '45px')
+			$choice1.html(currentQuestion.answer)
 
 			currentQuestion.displayImage();
+			$choice1.html(currentQuestion.answer);
 
 			time = 15; // reset the timer
 			questionIndex += 1;
@@ -158,7 +159,7 @@ $(document).ready(function(){
 
 	var baneCat = $("<img>", {class: 'answerImg', src: "https://media.giphy.com/media/3sS46VYO8KqWY/giphy.gif"});
 
-	var kevinConroy = $("<img>", {class: 'answerImg', src: "http://giphy.com/gifs/batman-arkham-knight-kevin-conroy-9ucrLlJzp3gNa"});
+	var kevinConroy = $("<img>", {class: 'answerImg', src: "https://media.giphy.com/media/9ucrLlJzp3gNa/giphy.gif"});
 
 	var kevinConroyVideo = '<iframe width="560" height="315" src="https://www.youtube.com/embed/g7jxcEqE5ic?rel=0&autoplay=1&start=5&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>'
 
@@ -188,11 +189,18 @@ $(document).ready(function(){
 	var penguinDevito = $("<img>", {class: 'answerImg', src: "https://media.giphy.com/media/fWqDxyYcnZN96/giphy.gif"});
 	var matches = $("<img>", {class: 'answerImg', src: "http://images.techtimes.com/data/images/full/177577/matches-malone.jpg"});
 
+	var riddlerQuestionImg = $("<img>", {class: 'answerImg', src: "http://images-cdn.moviepilot.com/images/c_fill,h_621,w_900/t_mp_quality/qwvvdxhehz5azpngaqof/riddle-me-this-5-actors-who-could-play-the-riddler-in-a-future-batman-movie-592657.jpg)"});
+
 // Sound Creation /////////////////////////////////////////////////////////////////////////////
 
 	// sound effects
 
 	var baneInCharge = $("<audio>", {class: 'answerSound', src: "assets/sounds/baneincharge.ogg"});
+	var intercomChime = $("<audio>", {class: 'answerSound', src: "assets/sounds/intercomechime.mp3"});
+
+	var riddleMeThis = $("<audio>", {class: 'answerSound', src: "assets/sounds/riddlemethis.mp3"});
+
+	var riddlerSolvingThisOne = $("<audio>", {class: 'answerSound', src: "assets/sounds/riddlersolvingthisone.mp3"});
 
 
 	// music
@@ -207,7 +215,7 @@ $(document).ready(function(){
 
 	// playlist for music
 
-	var playlist = [batmanAnimatedTheme, batmanBeginsTheme, arkhamCity, gothamCity]
+	var playlist = [batmanAnimatedTheme, batmanBeginsTheme, arkhamCity];
 
 
 // Question Creation //////////////////////////////////////////////////////////////////////////
@@ -272,13 +280,14 @@ $(document).ready(function(){
 	var undercover = new question("What alias does Batman often use when working undercover?", ['Don Fortunato', 'Wilson Fisk', 'Carmine Falcone', 'Matches Malone'],
 		'Matches Malone', matches);
 
+	var nygma = new question("Who is the Riddler?", ['Carmine Falcone', 'Guy Gardner', 'Vic Sage', 'Edward Nygma'], 'Edward Nygma', riddlerQuestionImg, riddleMeThis)
+
+
+
+
 	questions = [ movieReleased, penguinName, backBreak, batmanVoice, jokerVoice, killingJoke, quinnMeet,
 	 barbOracle, nightWing, robinKilled, waynesKilled, nora, wayneNames, billFinger, batmanChild, batmanSonName, harveyDent, jonathanCrane, penguinClub,
-	 undercover];
-
-	//questions = shuffleArray(questions);
-
-	//currentQuestion = questions[questionIndex];
+	 undercover, nygma];
 
 
 // General Functions //////////////////////////////////////////////////////////////////////////
@@ -288,7 +297,7 @@ $(document).ready(function(){
 		console.log('question index: ' + questionIndex)
 
 
-		if (questionIndex == questions.length) {
+		if (questionIndex == 19) {
 			// end game
 			$timerSpan.hide();
 			$question.html("Game Over!")
@@ -370,10 +379,9 @@ $(document).ready(function(){
 
 				currentQuestion.displayImage();
 
-				$('#choice2:hover').css('color', '')
+				$('#choice1:hover').css('color', '');
 
-				$choice1.html(currentQuestion.answer)
-
+				$choice1.html(currentQuestion.answer);
 				setTimeout(nextQuestion, 3800);
 			}	
 		}
@@ -382,6 +390,6 @@ $(document).ready(function(){
 
 	$timerSpan.hide(); // start with 'time remaining' hidden.
 
-	playMusic();
+	// playMusic();
 
 })// end of jQuery

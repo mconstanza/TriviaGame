@@ -6,7 +6,7 @@ body {
 	background-repeat: no-repeat;
     background-position: right top;
     background-attachment: fixed;
-    background-color: #426c6e;
+    background-color: #2f5c5f;
 
     font-family: GothamNights;
     font-size: 42px;
@@ -34,7 +34,7 @@ title, #title {
 
 #title {
 	margin-bottom: 1.5%%;
-	margin-top: 2.5%;
+	/*margin-top: 5%;*/
 }
 
 #questionDiv {
@@ -46,8 +46,8 @@ title, #title {
 /* Timer ***************************************************************************/
 
 #timerDiv {
-	margin-left: 52px;
-	width: 20%;
+	/*margin-left: 52px;*/
+	/*width: 20%;*/
 	font-size: 32px;
 }
 
@@ -55,7 +55,7 @@ title, #title {
 /*Answer Choices********************************************************************/
 
 #questionDiv {
-	width: 50%;
+	/*width: 50%;*/
 
 }
 
@@ -68,8 +68,9 @@ title, #title {
 }
 
 .choice img {
-	max-width: 40%;
-	max-height: 40%;
+	max-width: 70%;
+	max-height: 65%;
+	border: 2px solid white;
 }
 
 .choice:hover{
@@ -85,4 +86,34 @@ title, #title {
 	color: #0a2129;
 	border-color: #0a2129;
 	margin-top: 5%;
+}
+
+
+/* Media Queries **************************************************************/
+
+@media only screen and (max-width: 979px){
+	#questionDiv {
+		color: white;
+		font-size: 30px;
+		margin-top: 10%;
+	}
+
+	.choice {
+		font-size: 28px;
+	}
+}	
+
+
+@media only screen and (min-width: 1150px) {
+
+	#timerDiv {
+		padding-top: 15%;
+		padding-left: 6.5%;
+		
+	}
+
+	#questionDiv {
+		margin-top: 10%;
+		margin-bottom: 5%;
+	}
 }

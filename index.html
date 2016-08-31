@@ -17,39 +17,79 @@
 </head>
 
 
-<body>
+<body class='modal-open'>
+
+	<!-- Intro Modal -->
+	  <div class="modal fade" id="introModal" role="dialog">
+	    <div class="modal-dialog">
+	    
+	      <!-- Modal content-->
+	      <div class="modal-content">
+	        <div class="modal-header">
+	        	<!-- Change this to new game -->
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h1 class="modal-title text-center">Riddle me this!</h1>
+	        </div>
+	        <div class="modal-body text-center">
+	          
+	        </div>
+	        <div id='modalButtonDiv' class="modal-footer text-center">
+	          <button type="button" id='sailAway' class="btn btn-default" data-dismiss="modal">Sail Away!</button>
+	        </div>
+	      </div>
+	      
+	    </div>
+	  </div>
+
+
 	<div class='container'>
-
-		<div id ='title' class ='text-center'>Batman Trivia</div>
-		<!-- <hr> -->
-		<div id ='timerDiv'><span id = 'timerSpan'>Time Remaining: </span>
-			<span id='timeRemaining'></span>
+		<div class='row'>
+			<div id ='title' class ='text-center'>Batman Trivia</div>
 		</div>
 
+		<div class='row'>
 
-		<div class = 'text-center'>
-			<div id = 'questionDiv' class='text-center'></div>
-			<!-- <hr> -->
-			<div class='choiceBackground'>
-				<div class ='choice text-center' id = 'choice1'></div> 
-			</div> 
-
-			<div class='choiceBackground'>
-				<div class ='choice text-center' id = 'choice2'></div>
-			</div>	
-
-			<div class='choiceBackground'>	
-				<div class ='choice text-center' id = 'choice3'></div>
+			<div class ='col-md-3 text-center'>
+				<!-- Empty Row -->
+				<div class='row'>
+				</div>
+				<!-- <hr> -->
+				<div id ='timerDiv'><span id = 'timerSpan'>Time Remaining: </span>
+					<span id='timeRemaining'></span>
+				</div>
 			</div>
 
-			<div class='choiceBackground'>
-				<div class ='choice text-center' id = 'choice4'></div>
+			<div class ='col-md-6'>
+				
+				<div class = 'text-center'>
+					<div id = 'questionDiv' class='text-center'></div>
+					<!-- <hr> -->
+					<div class='choiceBackground'>
+						<div class ='choice text-center' id = 'choice1'></div> 
+					</div> 
+
+					<div class='choiceBackground'>
+						<div class ='choice text-center' id = 'choice2'></div>
+					</div>	
+
+					<div class='choiceBackground'>	
+						<div class ='choice text-center' id = 'choice3'></div>
+					</div>
+
+					<div class='choiceBackground'>
+						<div class ='choice text-center' id = 'choice4'></div>
+					</div>
+				</div>
+
+
+				<div class='text-center'>
+					<button id='startButton' class='btn btn-lg btn-default text-center'>Start Game!</button>
+				</div>	
+			</div>
+
+			<!-- Empty Right Column -->
+			<div class='col-md-3'>
 			</div>
 		</div>
-
-		<div class='text-center'>
-			<button id='startButton' class='btn btn-lg btn-default text-center'>Start Game!</button>
-		</div>	
-
 	</div>
 </body>
