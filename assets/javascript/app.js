@@ -20,6 +20,7 @@ $(document).ready(function(){
 	// Question transitioning ///////////////////
 	var questions = [];
 	var questionIndex = 0;
+	var currentQuestion;
 
 	// Game variables ///////////////////////////
 	var wins = 0;
