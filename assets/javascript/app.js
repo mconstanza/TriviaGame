@@ -158,7 +158,9 @@ $(document).ready(function(){
 
 	var baneCat = $("<img>", {class: 'answerImg', src: "https://media.giphy.com/media/3sS46VYO8KqWY/giphy.gif"});
 
-	var kevinConroy = '<iframe width="560" height="315" src="https://www.youtube.com/embed/g7jxcEqE5ic?rel=0&autoplay=1&start=5&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>'
+	var kevinConroy = $("<img>", {class: 'answerImg', src: "http://giphy.com/gifs/batman-arkham-knight-kevin-conroy-9ucrLlJzp3gNa"});
+
+	var kevinConroyVideo = '<iframe width="560" height="315" src="https://www.youtube.com/embed/g7jxcEqE5ic?rel=0&autoplay=1&start=5&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>'
 
 	var hamillJoker = $("<img>", {class: 'answerImg', src: "https://media.giphy.com/media/vZ57IYRNP6CCk/giphy.gif"});
 
