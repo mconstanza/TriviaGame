@@ -96,6 +96,7 @@ title, #title {
 		color: white;
 		font-size: 30px;
 		margin-top: 10%;
+		margin-bottom: 5%;
 	}
 
 	.choice {
@@ -104,7 +105,7 @@ title, #title {
 }	
 
 
-@media only screen and (min-width: 1150px) {
+@media only screen and (min-width: 980px) {
 
 	#timerDiv {
 		padding-top: 15%;

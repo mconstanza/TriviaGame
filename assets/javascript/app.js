@@ -148,7 +148,9 @@ $(document).ready(function(){
 
 		$('#title').append(playlist[music]);
 
-		playlist[music].get(0).play();
+		song = playlist[music].get(0);
+		song.volume = 0.2;
+		song.play();
 
 	}
 
@@ -190,29 +192,52 @@ $(document).ready(function(){
 	var penguinDevito = $("<img>", {class: 'answerImg', src: "https://media.giphy.com/media/fWqDxyYcnZN96/giphy.gif"});
 	var matches = $("<img>", {class: 'answerImg', src: "http://images.techtimes.com/data/images/full/177577/matches-malone.jpg"});
 
-	var riddlerQuestionImg = $("<img>", {class: 'answerImg', src: "http://images-cdn.moviepilot.com/images/c_fill,h_621,w_900/t_mp_quality/qwvvdxhehz5azpngaqof/riddle-me-this-5-actors-who-could-play-the-riddler-in-a-future-batman-movie-592657.jpg)"});
+	var riddlerQuestionImg = $("<img>", {class: 'answerImg', src: "http://static.giantbomb.com/uploads/scale_super/11/117904/2179200-batmanarkhamcity_riddler.jpg"});
 
 // Sound Creation /////////////////////////////////////////////////////////////////////////////
 
 	// sound effects
 
 	var baneInCharge = $("<audio>", {class: 'answerSound', src: "assets/sounds/baneincharge.ogg"});
-	var intercomChime = $("<audio>", {class: 'answerSound', src: "assets/sounds/intercomechime.mp3"});
+	var intercomChime = $("<audio>", {class: 'answerSound', src: "assets/sounds/intercomchime.mp3"});
 
 	var riddleMeThis = $("<audio>", {class: 'answerSound', src: "assets/sounds/riddlemethis.mp3"});
 
 	var riddlerSolvingThisOne = $("<audio>", {class: 'answerSound', src: "assets/sounds/riddlersolvingthisone.mp3"});
 
+	var penguinQuack = $("<audio>", {class: 'answerSound', src: "assets/sounds/penguinquack.mp3"});
+
+	var penguinGrunt = $("<audio>", {class: 'answerSound', src: "assets/sounds/penguingrunt.mp3"});
+
+	var whyDidYouSayThatName = $("<audio>", {class: 'answerSound', src: "assets/sounds/whydidyousaythatname.mp3"});
+
+	var surrender = $("<audio>", {class: 'answerSound', src: "assets/sounds/surrender.mp3"});
+
+	var puddin = $("<audio>", {class: 'answerSound', src: "assets/sounds/puddin.mp3"});
+
+	var iAmBatman = $("<audio>", {class: 'answerSound', src: "assets/sounds/iambatman.mp3"});
+
+	var freezeFailed = $("<audio>", {class: 'answerSound', src: "assets/sounds/failedyou.mp3"});
+
+	var beloved = $("<audio>", {class: 'answerSound', src: "assets/sounds/beloved.mp3"});
+
+	var batman66Sound = $("<audio>", {class: 'answerSound', src: "assets/sounds/batman66sound.mp3"});
+
+	var crowbar = $("<audio>", {class: 'answerSound', src: "assets/sounds/crowbar.mp3"});
+
+	var jokerLaugh = $("<audio>", {class: 'answerSound', src: "assets/sounds/jokerlaugh.mp3"});
 
 	// music
 
-	var batmanBeginsTheme = $("<audio>", {class: 'answerSound', src: "assets/sounds/batmanbeginstheme.mp3"});
+	var batmanBeginsTheme = $("<audio>", {class: 'music', src: "assets/sounds/batmanbeginstheme.mp3"});
+	
+	var batmanAnimatedTheme = $("<audio>", {class: 'music', src: "assets/sounds/batmananimatedtheme.mp3"});
 
-	var batmanAnimatedTheme = $("<audio>", {class: 'answerSound', src: "assets/sounds/batmananimatedtheme.mp3"});
+	var arkhamCity = $("<audio>", {class: 'music', src: "assets/sounds/arkhamcitytheme.mp3"});
 
-	var arkhamCity = $("<audio>", {class: 'answerSound', src: "assets/sounds/arkhamcitytheme.mp3"});
+	var gothamCity = $("<audio>", {class: 'music', src: "assets/sounds/gothamcity.mp3"});
 
-	var gothamCity = $("<audio>", {class: 'answerSound', src: "assets/sounds/gothamcity.mp3"});
+	$('.music').prop('volume', 0.5);
 
 	// playlist for music
 
@@ -223,26 +248,26 @@ $(document).ready(function(){
 
 
 	var movieReleased = new question("When was the first Batman movie released?", ['1966', '1943', 
-		'1968', '1989'], '1966', batShark );
+		'1968', '1989'], '1966', batShark, batman66Sound );
 
 	var penguinName = new question("What is the Penguin's real name?", ['Oswald Cobblepot',
-		'Edward Nygma', 'Norman Osborn', 'John Wayne Corben'], 'Oswald Cobblepot', penguin);
+		'Edward Nygma', 'Norman Osborn', 'John Wayne Corben'], 'Oswald Cobblepot', penguin, penguinQuack);
 
 	var backBreak = new question("What villain once broke Batman's back, leaving him crippled?",
 		["Ra's Al Ghul", 'Bane', 'Killer Croc', 'Mr. Freeze'], 'Bane', baneCat, baneInCharge);
 
 	var batmanVoice = new question("Who voiced Batman in 7 different cartoon series?",
-		['Kevin Conroy', 'Timothy Daly', 'Nolan North', 'Christian Bale'], "Kevin Conroy", kevinConroy);
+		['Kevin Conroy', 'Timothy Daly', 'Nolan North', 'Christian Bale'], "Kevin Conroy", kevinConroy, iAmBatman);
 
 	var jokerVoice = new question("Who voiced the Joker in Batman: The Animated Series?",
 		['Kevin Michael Richardson', 'Ceasar Romero', 'Jack Nicholson', 'Mark Hamill'], 
-		'Mark Hamill', hamillJoker);
+		'Mark Hamill', hamillJoker, jokerLaugh);
 
 	var killingJoke = new question("Who got shot during 'The Killing Joke' storyline?",
 		['Robin', 'Alfred', 'Barbara Gordon', 'Batman'], 'Barbara Gordon', barb);
 
 	var quinnMeet = new question("Where did Harley Quinn meet the Joker?",
-		['Gotham General', 'Arkham Asylum', 'Gotham police station', 'Bellereave'], "Arkham Asylum", harley);
+		['Gotham General', 'Arkham Asylum', 'Gotham police station', 'Bellereave'], "Arkham Asylum", harley, puddin);
 
 	var barbOracle = new question("Which of these was one of Barbara Gordon's aliases?",
 		['B', 'The Watcher', 'Oracle', 'Huntress'], 'Oracle', oracleImg);
@@ -251,23 +276,23 @@ $(document).ready(function(){
 		[ 'Red Hood', 'Nightwing', 'Moonknight', 'The Question'], 'Nightwing', nightwing);
 
 	var robinKilled = new question("Which Robin was killed by the Joker?", ['Dick Grayson', 'Jason Todd', 'Tim Drake', 'Damian Wayne'],
-		'Jason Todd', jasonTodd);
+		'Jason Todd', jasonTodd, crowbar);
 
 	var waynesKilled = new question("Who killed Bruce Wayne's parents?", ['The Joker', 'The Riddler', 'Joe Chill', 'Victor Zsaz'],
 		'Joe Chill', joeChill);
 
-	var nora = new question("What is the name of Mr. Freeze's wife that he has sworn to cure of her ailment?" , ['Emily', 'Lora', 'Elsa', 'Nora'], 'Nora', noraImg);
+	var nora = new question("What is the name of Mr. Freeze's wife that he has sworn to cure of her ailment?" , ['Emily', 'Lora', 'Elsa', 'Nora'], 'Nora', noraImg, freezeFailed);
 
 	var wayneNames = new question("What were the names of Bruce Wayne's parents?", ['Thomas and Martha', 'James and Elizabeth', 'George and Elaine', 'Fox and Dana'],
-		'Thomas and Martha', martha);
+		'Thomas and Martha', martha, whyDidYouSayThatName);
 
 	var billFinger = new question("Who is now acknowledged posthumously as one of the creators of Batman after years of not receiving credit?",
 		[ 'Bob Kane', 'Jerry Siegel', 'Bill Finger', 'Jack Kirby'], 'Bill Finger', billFingerImg);
 
 	var batmanChild = new question("Which of the following characters did Bruce Wayne have a son with?", ['Talia Al Ghul', 'Poison Ivy', 'Vesper Fairchild', 'Vicki Vale'],
-		'Talia Al Ghul', talia);
+		'Talia Al Ghul', talia, beloved);
 
-	var batmanSonName = new question("What is Batman's son's name?", ['Dick', 'Jason', 'Tim', 'Damian'], 'Damian', damian);
+	var batmanSonName = new question("What is Batman's son's name?", ['Dick', 'Jason', 'Tim', 'Damian'], 'Damian', damian, surrender);
 
 	var harveyDent = new question("What former District Attorney became the villain known as Two-Face?", ['Harvey Dent', 'Edward Nygma', 'Jim Gordon', 'Jonathan Crane'],
 		'Harvey Dent', harveyDentImg);
@@ -276,7 +301,7 @@ $(document).ready(function(){
 		'Scarecrow', scarecrow);
 
 	var penguinClub = new question("What is the name of Penguin's nightclub?", ['Club Penguin', 'Iceberg Lounge', 'Umbrella Lounge', 'Club Glacier'],
-		'Iceberg Lounge', penguinDevito);
+		'Iceberg Lounge', penguinDevito, penguinGrunt);
 
 	var undercover = new question("What alias does Batman often use when working undercover?", ['Don Fortunato', 'Wilson Fisk', 'Carmine Falcone', 'Matches Malone'],
 		'Matches Malone', matches);
@@ -298,7 +323,7 @@ $(document).ready(function(){
 		console.log('question index: ' + questionIndex)
 
 
-		if (questionIndex == 19) {
+		if (questionIndex == questions.length) {
 			// end game
 			$timerSpan.hide();
 			$question.html("Game Over!")
@@ -391,6 +416,6 @@ $(document).ready(function(){
 
 	$timerSpan.hide(); // start with 'time remaining' hidden.
 
-	// playMusic();
+	playMusic();
 
 })// end of jQuery
